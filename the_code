@@ -1,6 +1,50 @@
+#include <Wire.h>
+
+const int motorPin0 = 4;
+const int motorPin1 = 5;
+
+const int echoPin = 6;//6, 7?
+const int triggerPin = 7;//is it 1 g or 2?
+
+float distance;
+float time;
+
 setup(){
     //code i run once
+    pinMode(motorPin0, OUTPUT);//motor pins setup
+    pinMode(motorPin1, OUTPUT);
+
+    pinMode(echoPin, INPUT);//ultrasonic sensor pins
+    pinMode(triggerPin, OUTPUT);
+
+    Serial.begin(9600);
+    Serial.println("initializing idiotic programming...");
 }
 loop(){
     //code i run forever
+    digitalWrite(triggerPin , HIGH);//hit sensor
+    delayMicroseconds(10);//wait
+    digitalWrite(triggerPin, LOW);//stop hitting sensor
+
+    time = pulseIn(echoPin, HIGH);
+
+    distance = 0.017 * time;//calcs the distance, max 340
+
+    if(distance <= 50){
+        //turn left?
+        digitalWrite(motorPin0, HIGH);
+
+        delay(100);
+
+        digitalWrite(motorPin1, LOW);
+    }else{
+        digitalWrite(motorPin0, HIGH);//forward
+        digitalWrite(motorPin1, HIGH);
+        delay(1);
+        digitalWrite(motorPin0, LOW);//stop
+        digitalWrite(motorPin1, LOW);
+    }
+
+    //delay(100);//needs to read faster
 }
+
