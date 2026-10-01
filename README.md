@@ -7,3 +7,5 @@ Not sure where to write the things I'm doing so it's all here i guess. I'm viewi
 Arduino IDE to get what I need to '#include'.
 
 The programming part of the ultrasonic sensor, I follow Arduino Tutuorials: https://arduinogetstarted.com/tutorials/arduino-ultrasonic-sensor
+
+I think the code is good for a first test, I just need to start wiring and actually putting a something together to make a something.
