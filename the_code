@@ -1,0 +1,6 @@
+setup(){
+    //code i run once
+}
+loop(){
+    //code i run forever
+}
